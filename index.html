@@ -18,13 +18,41 @@ var b=document.getElementsByTagName("script")[0];
 a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0052/3483.js?"+Math.floor(new Date().getTime()/3600000);
 a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+				// Get media - with autoplay disabled (audio or video)
+				var media = $('video').not("[autoplay='autoplay']");
+				var tolerancePixel = 40;
+
+				function checkMedia(){
+						// Get current browser top and bottom
+						var scrollTop = $(window).scrollTop() + tolerancePixel;
+						var scrollBottom = $(window).scrollTop() + $(window).height() - tolerancePixel;
+
+						media.each(function(index, el) {
+								var yTopMedia = $(this).offset().top;
+								var yBottomMedia = $(this).height() + yTopMedia;
+								if(scrollTop < yBottomMedia && scrollBottom > yTopMedia){ //view explaination in `In brief` section above
+										$('video').prop('muted', true);
+										$(this).get(0).play();
+								} else {
+										$(this).get(0).pause();
+								}
+						});
+
+						//}
+				}
+				$(document).on('scroll', checkMedia);
+		});
+		</script>
 	</head>
 	<body id="top">
 
 		<!-- Header -->
 			<header id="header">
 				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-				<h1><strong>I am Tina</strong>, an aspiring <br />Computer Engineer.<br /></h1>
+				<h1><strong>I am Tina</strong>, an aspiring &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computer Engineer.<br /></h1>
 			</header>
 
 		<!-- Main -->
@@ -35,8 +63,9 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 						<header class="major">
 							<h2>Welcome,</h2>
 						</header>
-						<p>I am a student at <b>UC San Diego</b>, class of 2018 pursuing a BS in <b>Computer Science Engineering</b>. </br></br> I do a variety of things such as mobile programming, game development, and research with prosthetics.</br>
-						I like to spend my free time playing badminton, karaoking, and spending time with friends.</br></br>
+						<p>I am a student at <b>UC San Diego</b>, class of 2018 pursuing a BS in <b>Computer Science Engineering</b>. </br></br>
+						I do a variety of things such as mobile, game, and web development. </br>
+						My main focus currently is with <b>Android</b> development.</br> </br>
 						Feel free to look at my resume and scroll to learn more about what I do!</p>
 						<ul class="actions">
 							<li><a href="tina_nguyen_resume.pdf" target="_blank" class="button">Resume</a></li>
@@ -45,29 +74,86 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 				<!-- Two -->
 					<section id="two">
-						<h2>Recent Work</h2>
+						<h2>RECENT WORK</h2>
+						<h3>Intuit | Mint Summer 2017 Internship </h3>
 						<div class="row">
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>Awtter</h3>
-								<p>A social network where animal lovers can favorite, comment, and share pictures of animals.</br>
-								Android.</p>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Tutoring</h3>
-								<p>Helping students with CSE 8A: Introduction to Object Oriented Programming in Java
-								for Professors Alvarado and Cao.</p>
+								<a href="images/fulls/sb_large.png" class="image fit thumb"><img src="images/thumbs/sb_small.png" alt="" /></a>
+								<h3><b>Simple Budgets</b> -- Main Project</h3>
+							</a>
+								<ul>
+									<li>Implemented a newly redesigned budgeting experience</li>
+									<li>Released as an alpha test to the top thousand most active budget users</li>
+									<li>Worked closely with product, design, and quality assurance teams to ship the product on time with quality</li>
+									<!-- <i>This was a special project in that all members of the team--product manager, designer, and developers--were all interns.</i> -->
+									<i style="font-size:.9em">Mint is known for tracking finances.  A core feature of doing so is with budgeting.  It was an amazing opportunity for a team of interns to be able to take on and ship this project</i>
+							</ul>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Game Development</h3>
-								<p>Entry level experience with the game engine Unity.  </p>
+								<video id="video" controls="controls" width="300" height="550" name="Video Name" src="videos/Simple Budgets Video.mov"></video>
+							</br></br></br></br></br></br></br>
+						  </article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/simple_add_lg.jpg" class="image fit thumb"><img src="images/thumbs/simple_add_small.png" alt="" /></a>
+								<h3><b>Simple Add</b> -- Production A/B Test</h3>
+								<ul>
+									<li>Prompts the user to add financial institutions</li>
+									<li>Bucketed users so certain users only see certain cards</br></br></br></li>
+								</ul>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<video id="video" controls="controls" width="300" height="550" name="Video Name" src="videos/simple_add_vid.mov"></video>
+								</br></br></br>
+						  </article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/mint_insight_lg.png" class="image fit thumb"><img src="images/thumbs/mint_insight_small.png" alt="" /></a>
+								<h3><b>Mint Insights</b> -- Hackathon</h3>
+								<ul>
+									<li>Won the "Most Production Ready" award at Mint's annual hackathon.</li>
+									<li>Provides personable and insightful information drawing from customers’ real financial data in a visually appealing way</li>
+								</ul>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<video id="video" controls="controls" width="300" height="550" name="Video Name" src="videos/mint_insight_vid.mov"></video>
+								</br></br>
+						  </article>
+						</div>
+						<h2>Projects</h2>
+						<div class="row">
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/eventory_lg.png" class="image fit thumb"><img src="images/thumbs/eventory_small.png" alt="" /></a>
+								<h3><b>Eventory</b> -- CSE 110 Project (2016)</h3>
+								<ul>
+									<li>Android platform that connects students to popular events at UC San Diego.</li>
+								</ul>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<video id="video" controls="controls" width="300" height="370" name="Video Name" src="videos/eventory_vid.mp4"></video>
+							</br>
+									<a href="https://drive.google.com/open?id=0B53fWbmW3SMBWEJ2ZkpROE5Cb1E" target="_blank">Full Video</a>
+							</br></br></br></br></br></br>
+						  </article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+								<h3><b>Awtter</b> -- Personal Project (2015)</h3>
+								<ul>
+									<li>A social network where animal lovers can favorite, comment, and share pictures of animals.</li>
+							  </ul>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
 								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Droplets</h3>
-								<p>Goal: Catch raindrops with the umbrella.</p>
+								<h3><b>Droplets</b> -- Personal Project (2015)</h3>
+								<ul>
+									<li>Goal: Catch raindrops with the umbrella.</li>
+								</ul>
+							</article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
+								<h3><b>Tutoring</b></h3>
+								<ul>
+								<li>Helping students with CSE 8A and CSE 8B: Introduction to Object Oriented Programming in Java
+								for Professors Alvarado and Cao.</li>
+								</ul>
 							</article>
 							<!--
 							<article class="6u 12u$(xsmall) work-item">
@@ -106,8 +192,8 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 								<ul class="labeled-icons">
 									<!--<li>
 										<h3 class="icon fa-home"><span class="label">Address</span></h3>
-										San Diego 
-										& 
+										San Diego
+										&
 										Napa
 									</li>-->
 									<li>
